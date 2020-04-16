@@ -4,9 +4,8 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace PrototypePattern
 {
-    //原型模式
     [Serializable]
-    public class Email : BaseClone<Email>
+    public class Email
     {
         public int Length { get; set; } = 10;//值类型
         public string Address { get; set; } = "X";//不可变的引用类型
@@ -15,11 +14,6 @@ namespace PrototypePattern
         public object ShallowClone()
         {
             return this.MemberwiseClone();
-        }
-
-        public new object DeepClone()
-        {
-            return base.DeepClone();
         }
     }
 
@@ -31,14 +25,13 @@ namespace PrototypePattern
     }
 
     [Serializable]
-    public class BaseClone<T>
+    public static class BaseClone
     {
-
-        public virtual T DeepClone()
+        public static object DeepClone<T>(this T obj)
         {
             MemoryStream memoryStream = new MemoryStream();
             BinaryFormatter formatter = new BinaryFormatter();
-            formatter.Serialize(memoryStream, this);
+            formatter.Serialize(memoryStream, obj);
             memoryStream.Position = 0;
             return (T)formatter.Deserialize(memoryStream);
         }
