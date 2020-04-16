@@ -4,6 +4,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace PrototypePattern
 {
+    //原型模式
     [Serializable]
     public class Email : BaseClone<Email>
     {
