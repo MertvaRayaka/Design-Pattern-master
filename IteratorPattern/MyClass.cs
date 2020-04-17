@@ -8,8 +8,8 @@ namespace IteratorPattern
         Person p = new Person();
         public MyClass()
         {
-            p.Cars.Add(new Car { CarAge = 5, CarBrand = "Benz" });
-            p.Cars.Add(new Car { CarAge = 3, CarBrand = "BMW" });
+            p.Cars.Add(new Car { CarBrand = "Benz" });
+            p.Cars.Add(new Car { CarBrand = "BMW" });
         }
         public IEnumerator GetEnumerator()
         {
@@ -37,7 +37,7 @@ namespace IteratorPattern
 
     public class Car
     {
-        public int CarAge { get; set; }
+        public int CarAge => CarBrand == "Benz" ? 5 : 10;
         public string CarBrand { get; set; }
     }
 }
