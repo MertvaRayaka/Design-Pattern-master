@@ -10,16 +10,29 @@ namespace IteratorPattern
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("迭代器模式：");
-            IListCollection list = new ConcreteList();
-            var iterator = list.GetIterator();
+            var mc = (MyClass)Activator.CreateInstance(typeof(MyClass));
 
-            while (iterator.MoveNext())
+            foreach (var item in mc)
             {
-                int i = (int)iterator.GetCurrent();
-                Console.WriteLine(i.ToString());
-                iterator.Next();
+                Console.WriteLine(item);
             }
+
+            foreach (var car in mc.IteratorMethod())
+            {
+                Console.WriteLine(car.CarAge);
+                Console.WriteLine(car.CarBrand);
+            }                      
+
+            //Console.WriteLine("迭代器模式：");
+            //IListCollection list = new ConcreteList();
+            //var iterator = list.GetIterator();
+
+            //while (iterator.MoveNext())
+            //{
+            //    string str = (string)iterator.GetCurrent();
+            //    Console.WriteLine(str);
+            //    iterator.Next();
+            //}
 
             Console.Read();
         }
