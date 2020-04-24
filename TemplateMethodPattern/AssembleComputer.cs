@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TemplateMethodPattern
 {
@@ -11,6 +7,11 @@ namespace TemplateMethodPattern
     /// </summary>
     public abstract class AssembleComputer
     {
+        public string Brand { get; set; }
+        public AssembleComputer(string brand)
+        {
+            Brand = brand;
+        }
         /// <summary>
         /// 组装主机
         /// </summary>
@@ -29,7 +30,7 @@ namespace TemplateMethodPattern
         /// <summary>
         /// 组装起来
         /// </summary>
-        public void Assemble()
+        public virtual void Assemble()
         {
             BuildMainFramePart();
             BuildScreenPart();
@@ -43,19 +44,23 @@ namespace TemplateMethodPattern
     /// </summary>
     public class AssembleHpComputer : AssembleComputer
     {
+        public AssembleHpComputer(string brandName) : base(brandName)
+        {
+
+        }
         public override void BuildMainFramePart()
         {
-            Console.WriteLine("组装HP电脑的主板");
+            Console.WriteLine($"组装{base.Brand}电脑的主板");
         }
 
         public override void BuildScreenPart()
         {
-            Console.WriteLine("组装HP电脑的显示器");
+            Console.WriteLine($"组装{base.Brand}电脑的显示器");
         }
 
         public override void BuildInputPart()
         {
-            Console.WriteLine("组装HP电脑的键盘鼠标");
+            Console.WriteLine($"组装{base.Brand}电脑的键盘鼠标");
         }
     }
 
@@ -64,19 +69,23 @@ namespace TemplateMethodPattern
     /// </summary>
     public class AssembleDellComputer : AssembleComputer
     {
+        public AssembleDellComputer(string brandName) : base(brandName)
+        {
+
+        }
         public override void BuildMainFramePart()
         {
-            Console.WriteLine("组装Dell电脑的主板");
+            Console.WriteLine($"组装{base.Brand}电脑的主板");
         }
 
         public override void BuildScreenPart()
         {
-            Console.WriteLine("组装Dell电脑的显示器");
+            Console.WriteLine($"组装{base.Brand}电脑的显示器");
         }
 
         public override void BuildInputPart()
         {
-            Console.WriteLine("组装Dell电脑的键盘鼠标");
+            Console.WriteLine($"组装{base.Brand}电脑的键盘鼠标");
         }
     }
 

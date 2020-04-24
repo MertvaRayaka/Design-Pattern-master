@@ -12,7 +12,7 @@ namespace TemplateMethodPattern
         {
             //组装HP电脑
             Console.WriteLine("开始组织Hp电脑:");
-            AssembleComputer assembleHpComputer = new AssembleHpComputer();
+            AssembleComputer assembleHpComputer = new AssembleHpComputer("HP");
 
             assembleHpComputer.Assemble();
 
@@ -20,7 +20,7 @@ namespace TemplateMethodPattern
 
             //组装DELL电脑
             Console.WriteLine("开始组织DELL电脑:");
-            AssembleComputer assembleDellComputer = new AssembleDellComputer();
+            AssembleComputer assembleDellComputer = new AssembleDellComputer("DELL");
 
             assembleDellComputer.Assemble();
 
