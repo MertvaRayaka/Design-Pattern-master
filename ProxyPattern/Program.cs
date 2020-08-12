@@ -14,7 +14,10 @@ namespace ProxyPattern
             Google google = new Google();
             try
             {
-                google.Search("特朗普");
+                if (!Task.Run(() => google.Search("特朗普")).Wait(1000))
+                {
+                    Console.WriteLine("访问超时(2S)");
+                }
             }
             catch (Exception ex)
             {

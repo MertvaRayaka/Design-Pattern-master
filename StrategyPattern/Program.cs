@@ -12,12 +12,12 @@ namespace StrategyPattern
         {
             TravelStrategy travelPlan = null;
 
-            Weather weather = (Weather)(new Random().Next(1,3));
+            Weather weather = (Weather)(new Random().Next(1, 3));
             switch (weather)
             {
                 case Weather.Rain:
                     Console.WriteLine("天气糟糕");
-                    travelPlan = new BackupTravel() ;
+                    travelPlan = new BackupTravel();
                     break;
                 case Weather.Sunny:
                     Console.WriteLine("天气晴好");
