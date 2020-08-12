@@ -1,5 +1,6 @@
 ﻿using System;
 
+//测试GitHub
 //原型模式
 namespace PrototypePattern
 {
